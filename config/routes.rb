@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/signup', to: 'users#new'
 
+  resources :users
+
   # namespace 'static_pages' do
   #   get :home
   #   get :help
