@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
 
     else
+      flash[:danger] = 'アドレスとパスワードの組み合わせが正しくありません'
       render('new')
     end
   end
