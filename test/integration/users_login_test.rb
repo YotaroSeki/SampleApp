@@ -41,4 +41,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select('a[href=?]', logout_path,      count: 0)
     assert_select('a[href=?]', user_path(@user), count: 0)
   end
+
+  test 'login with remembering then login without remembering' do
+    login_as(@user)
+    assert_not_empty(cookies['remember_token'])
+    delete logout_path
+    login_as(@user, remember_me: '0')
+    assert_empty(cookies['remember_token'])
+  end
 end
