@@ -34,11 +34,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to(edit_user_url(@user))
     name = 'meu'
     email = 'memememeumeu@example.com'
-    patch patch user_path(@user), params: { user: { name:  name, email: email, password: '', password_confirmation: '' } }
+    patch user_path(@user), params: { user: { name:  name, email: email, password: '', password_confirmation: '' } }
     assert_not_empty(flash)
     assert_redirected_to(@user)
     @user.reload
-    assert_empty(flash)
+    assert_not_empty(flash)
     assert_equal(name, @user.name)
     assert_equal(email, @user.email)
   end
