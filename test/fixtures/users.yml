@@ -4,6 +4,7 @@ meumeu:
   name: Meu Meu
   email: meumeumeumeu@example.com
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 rinrin:
   name: Rin Shimotsuki
