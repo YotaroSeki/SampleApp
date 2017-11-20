@@ -11,6 +11,9 @@ gem 'rails', '~> 5.1.4'
 gem 'bootstrap-sass', '3.3.7'
 gem 'jquery-rails'
 gem 'bcrypt', '~>3.1.11'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
