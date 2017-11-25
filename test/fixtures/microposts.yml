@@ -11,7 +11,7 @@ java:
 jubeat:
   content: 'beatmania2dx'
   created_at: <%= 2.hours.ago %>
-  usr: meumeu
+  user: meumeu
 
 nullnull:
   content: 'nilnil'
