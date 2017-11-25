@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:meumeu)
   end
@@ -34,7 +33,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select('a[href=?]', login_path)
     assert_select('a[href=?]', logout_path,      count: 0)
     assert_select('a[href=?]', user_path(@user), count: 0)
-    #別ウインドウでログアウトする人のtest
+    # 別ウインドウでログアウトする人のtest
     delete logout_path
     follow_redirect!
     assert_select('a[href=?]', login_path)

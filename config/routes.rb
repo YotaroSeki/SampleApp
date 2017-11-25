@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'static_pages#home'
 
   get '/help', to: 'static_pages#help'
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   #   get :about
   #   get :contact
   # end
-
 
   # get 'static_pages/home'
   #
