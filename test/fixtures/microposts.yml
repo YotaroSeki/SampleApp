@@ -1,9 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+popopo:
+  content: 'Tokyo institute of technology'
+  created_at: <%= 10.minutes.ago %>
 
-one:
-  content: MyText
-  user: one
+java:
+  content: 'Scala'
+  created_at: <%= 10.years.ago %>
 
-two:
-  content: MyText
-  user: two
+jubeat:
+  content: 'beatmania2dx'
+  created_at: <%= 2.hours.ago %>
+
+nullnull:
+  content: 'nilnil'
+  created_at: <%= Time.zone.now %>
