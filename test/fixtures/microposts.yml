@@ -1,15 +1,26 @@
 popopo:
   content: 'Tokyo institute of technology'
   created_at: <%= 10.minutes.ago %>
+  user: meumeu
 
 java:
   content: 'Scala'
   created_at: <%= 10.years.ago %>
+  user: meumeu
 
 jubeat:
   content: 'beatmania2dx'
   created_at: <%= 2.hours.ago %>
+  usr: meumeu
 
 nullnull:
   content: 'nilnil'
   created_at: <%= Time.zone.now %>
+  user: meumeu
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: meumeu
+<% end %>
