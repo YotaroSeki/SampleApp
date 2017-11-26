@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
   end
   resources :microposts, only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
 
   # namespace 'static_pages' do
   #   get :home
