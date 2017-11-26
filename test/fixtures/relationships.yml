@@ -1,11 +1,17 @@
-## Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-#
-#one:
-#  follower_id: 1
-#  followed_id: MyString
-#  integer: MyString
-#
-#two:
-#  follower_id: 1
-#  followed_id: MyString
-#  integer: MyString
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follower: meumeu
+  followed: ibubu
+
+two:
+  follower: meumeu
+  followed: sakiki
+
+three:
+  follower: ibubu
+  followed: meumeu
+
+four:
+  follower: rinrin
+  followed: meumeu
