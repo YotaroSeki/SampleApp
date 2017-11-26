@@ -20,7 +20,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template('users/edit')
     name = 'meu'
     email = 'memememeumeu@example.com'
-    patch user_path(@user), params:{ user: {name: name, email: email, password: '', password_confirmation: '' } }
+    patch user_path(@user), params: { user: { name: name, email: email, password: '', password_confirmation: '' } }
     assert_not(flash.empty?)
     assert_redirected_to(@user)
     @user.reload
@@ -36,7 +36,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_nil(session[:forwarding_url])
     name = 'meu'
     email = 'memememeumeu@example.com'
-    patch user_path(@user), params: { user: { name:  name, email: email, password: '', password_confirmation: '' } }
+    patch user_path(@user), params: { user: { name: name, email: email, password: '', password_confirmation: '' } }
     assert_not_empty(flash)
     assert_redirected_to(@user)
     @user.reload

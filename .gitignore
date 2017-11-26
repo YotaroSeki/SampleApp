@@ -25,3 +25,4 @@
 /.idea
 /spring/*.pid
 sample_app.iml
+public/uploads/micropost/picture/

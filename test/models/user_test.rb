@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert(true)
-  # end
-
   def setup
     @user = User.new(name: 'Meu Meu', email: 'meumeu@example.com', password: 'foobar', password_confirmation: 'foobar')
   end
@@ -51,7 +47,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'email should be unique' do
     duplicate_user = @user.dup
-    duplicate_user.email =@user.email.upcase
+    duplicate_user.email = @user.email.upcase
     @user.save
     assert_not(duplicate_user.valid?)
   end
@@ -75,5 +71,13 @@ class UserTest < ActiveSupport::TestCase
 
   test 'user#authenticated? should return false if a user has nil digest' do
     assert_not(@user.authenticated?(''))
+  end
+
+  test 'associated microposts should be destroyed' do
+    @user.save
+    @user.microposts.create!(content: 'po')
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
   end
 end

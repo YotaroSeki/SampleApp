@@ -1,0 +1,46 @@
+popopo:
+  content: 'Tokyo institute of technology'
+  created_at: <%= 10.minutes.ago %>
+  user: meumeu
+
+java:
+  content: 'Scala'
+  created_at: <%= 10.years.ago %>
+  user: meumeu
+
+jubeat:
+  content: 'beatmania2dx'
+  created_at: <%= 2.hours.ago %>
+  user: meumeu
+
+nullnull:
+  content: 'nilnil'
+  created_at: <%= Time.zone.now %>
+  user: meumeu
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: meumeu
+<% end %>
+
+ants:
+  content: 'aaaaaa'
+  created_at: <%= 2.years.ago %>
+  user: sakiki
+
+zone:
+  content: 'Danger zone!'
+  created_at: <%= 3.days.ago %>
+  user: sakiki
+
+tone:
+  content: 'ICRUS †'
+  created_at: <%= 10.minutes.ago %>
+  user: ibubu
+
+van:
+  content: 'ソリ！'
+  created_at: <%= 4.hours.ago %>
+  user: ibubu

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'static_pages#home'
 
   get '/help', to: 'static_pages#help'
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
+  resources :microposts, only: %i[create destroy]
 
   # namespace 'static_pages' do
   #   get :home
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   #   get :about
   #   get :contact
   # end
-
 
   # get 'static_pages/home'
   #

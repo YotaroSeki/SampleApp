@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:meumeu)
   end
@@ -30,6 +29,5 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select('a[href=?]', user_path(@user), count: 0)
     assert_select('a[href=?]', edit_user_path(@user), count: 0)
     assert_select('a[href=?]', users_path, count: 0)
-
   end
 end
