@@ -93,11 +93,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'feed should have right posts' do
-    meu = user(:meumeu)
-    ibu = user(:ibubu)
-    rin = user(:rinrin)
+    meu = users(:meumeu)
+    ibu = users(:ibubu)
+    rin = users(:rinrin)
 
-    rin.micriposts.each do |post_following|
+    rin.microposts.each do |post_following|
       assert(meu.feed.include?(post_following))
     end
 
@@ -106,7 +106,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     ibu.microposts.each do |post_not_following|
-      assert_not(ibu.feed.include?(post_not_following))
+      assert_not(meu.feed.include?(post_not_following))
     end
   end
 end
