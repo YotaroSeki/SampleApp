@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follower: meumeu
+  followed: rinrin
+
+two:
+  follower: meumeu
+  followed: sakiki
+
+three:
+  follower: ibubu
+  followed: meumeu
+
+four:
+  follower: rinrin
+  followed: meumeu

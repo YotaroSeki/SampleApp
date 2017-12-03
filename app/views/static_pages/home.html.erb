@@ -1,5 +1,5 @@
 <% if logged_in? %>
-    <%= render 'static_pages/show_microposts' %>
+    <%= render 'static_pages/is_logged_in' %>
 <% else %>
-    <%= render 'static_pages/show_sign_in' %>
+    <%= render 'static_pages/is_not_logged_in' %>
 <% end %>
