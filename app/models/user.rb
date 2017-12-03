@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships
   has_many :favorites, dependent: :destroy
+  has_many :favorite_microposts, through: :favorites, source: :micropost
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
 
@@ -53,5 +54,17 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def favorite(micropost)
+    favorites.create(micropost_id: micropost.id)
+  end
+
+  def cancel_favorite(micropost)
+    favorites.find_by(micropost_id: micropost.id).destroy
+  end
+
+  def liked?(micropost)
+    favorite_microposts.include?(micropost)
   end
 end

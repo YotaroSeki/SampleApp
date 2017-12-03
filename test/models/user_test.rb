@@ -109,4 +109,14 @@ class UserTest < ActiveSupport::TestCase
       assert_not(meu.feed.include?(post_not_following))
     end
   end
+
+  test 'should likes and cancel microposts' do
+    meu = users(:meumeu)
+    micropost = microposts(:tone)
+    assert_not(meu.liked?(micropost))
+    meu.favorite(micropost)
+    assert(meu.liked?(micropost))
+    meu.cancel_favorite(micropost)
+    assert_not(meu.liked?(micropost))
+  end
 end
