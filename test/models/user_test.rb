@@ -116,6 +116,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not(meu.liked?(micropost))
     meu.favorite(micropost)
     assert(meu.liked?(micropost))
+    assert(micropost.likes.include?(meu))
     meu.cancel_favorite(micropost)
     assert_not(meu.liked?(micropost))
   end
