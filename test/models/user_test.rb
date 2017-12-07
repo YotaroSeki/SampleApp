@@ -121,7 +121,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not(meu.liked?(micropost))
   end
 
-  test "should redirect favorites when not logged in" do
+  test 'should redirect favorites when not logged in' do
     get favorites_user_path(@user)
     assert_redirected_to login_url
   end

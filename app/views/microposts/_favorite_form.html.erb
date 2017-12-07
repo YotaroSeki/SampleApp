@@ -1,7 +1,7 @@
 <div id='favorite_form'>
-  <% if current_user.liked?(@micropost) %>
-      <%= render 'microposts/cancel_favorite' %>
+  <% if current_user.liked?(micropost) %>
+      <%= render 'microposts/cancel_favorite', micropost: micropost %>
   <% else %>
-      <%= render 'microposts/favorite' %>
+      <%= render 'microposts/favorite', micropost: micropost %>
   <% end %>
 </div>
