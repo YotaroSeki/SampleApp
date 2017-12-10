@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[edit update index destroy following followers]
+  before_action :logged_in_user, only: %i[edit update index destroy following followers favorites]
   before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
 
@@ -62,11 +62,17 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @microposts = @user.favorite_microposts.paginate(page: params[:page])
+    render 'show_favorites'
+  end
+
   private
 
   def user_params
     params.require(:user)
-          .permit(:name, :email, :password, :password_confirmation)
+        .permit(:name, :email, :password, :password_confirmation)
   end
 
   def correct_user
