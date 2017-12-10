@@ -193,6 +193,10 @@ aside {
   padding: 0;
 }
 
+.users.favorites {
+  padding: 0;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -278,6 +282,10 @@ input {
   }
 }
 
+#favorite_form {
+  margin-top: 1em;
+}
+
 aside {
   textarea {
     height: 100px;
@@ -289,5 +297,36 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+.favorites {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
   }
 }
