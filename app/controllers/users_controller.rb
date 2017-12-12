@@ -65,14 +65,14 @@ class UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @microposts = @user.favorite_microposts.paginate(page: params[:page])
-    render 'show_favorites'
+    render 'favorites'
   end
 
   private
 
   def user_params
     params.require(:user)
-        .permit(:name, :email, :password, :password_confirmation)
+          .permit(:name, :email, :password, :password_confirmation)
   end
 
   def correct_user
