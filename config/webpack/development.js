@@ -1,3 +1,6 @@
 const environment = require('./environment')
+const shared = require('./shared')
+const merge = require('webpack-merge')
 
-module.exports = environment.toWebpackConfig()
+const config = merge(environment.toWebpackConfig(), shared)
+module.exports = config
