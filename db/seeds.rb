@@ -18,5 +18,10 @@ users = User.all
 user = users.first
 following = users[2..50]
 followers = users[3..40]
+microposts = Micropost.all
+liked_microposts = user.microposts.all
+liked_micropost = microposts.first
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+liked_microposts.each { |micropost| user.favorite(micropost) }
+following.each { |a_user| a_user.favorite(liked_micropost) }

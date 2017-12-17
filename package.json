@@ -1,5 +1,19 @@
 {
   "name": "sample_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.2.0",
+    "axios": "^0.17.1",
+    "caniuse-lite": "1.0.30000697",
+    "coffeescript": "1.12.7",
+    "element-ui": "^2.0.8",
+    "vue": "^2.5.11",
+    "vue-loader": "^13.6.0",
+    "vue-template-compiler": "^2.5.11",
+    "vuex": "^3.0.1",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.7"
+  }
 }

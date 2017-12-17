@@ -109,4 +109,20 @@ class UserTest < ActiveSupport::TestCase
       assert_not(meu.feed.include?(post_not_following))
     end
   end
+
+  test 'should likes and cancel microposts' do
+    meu = users(:meumeu)
+    micropost = microposts(:tone)
+    assert_not(meu.liked?(micropost))
+    meu.favorite(micropost)
+    assert(meu.liked?(micropost))
+    assert(micropost.likes.include?(meu))
+    meu.cancel_favorite(micropost)
+    assert_not(meu.liked?(micropost))
+  end
+
+  test 'should redirect favorites when not logged in' do
+    get favorites_user_path(@user)
+    assert_redirected_to login_url
+  end
 end

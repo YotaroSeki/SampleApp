@@ -15,8 +15,8 @@ gem 'fog'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rails', '~> 5.1.4'
+gem 'webpacker', github: 'rails/webpacker'
 gem 'will_paginate'
-
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

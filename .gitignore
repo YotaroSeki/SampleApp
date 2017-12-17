@@ -26,3 +26,9 @@
 /spring/*.pid
 sample_app.iml
 public/uploads/micropost/picture/
+/public/packs
+/public/packs-test
+/node_modules
+/public/packs
+/public/packs-test
+/node_modules
