@@ -271,6 +271,8 @@ GEM
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
+    jb (0.4.1)
+      multi_json
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -451,6 +453,7 @@ DEPENDENCIES
   fog
   guard
   guard-minitest
+  jb
   jbuilder (~> 2.5)
   jquery-rails
   listen
