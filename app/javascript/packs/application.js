@@ -8,11 +8,17 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue';
+import Navbar from '../components/shared/navbar.vue';
+import About from '../components/about/about.vue';
+import Contact from '../components/contact/contact.vue';
 import Help from '../components/help/help.vue';
 
 const container = new Vue({
     el: '.js-vue',
     components: {
+        'Navbar': Navbar,
+        'About': About,
+        'Contact': Contact,
         'Help': Help
     }
 });
