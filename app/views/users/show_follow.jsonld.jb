@@ -1,0 +1,34 @@
+json = {
+    user_info: {
+        user: @user,
+        user_icon: {
+            url: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email.downcase)}?s=80",
+        },
+        profile: {
+            link: user_path(@user),
+            microposts: @user.microposts.count
+        },
+        title: @title,
+        count: @users.count
+    }
+}
+
+json[:stats] = render 'shared/stats'
+
+json[:members] = {}
+users = @users.each_slice(30).to_a
+count = 0
+users.each do |page|
+  count += 1
+  json[:members][count] = {}
+  page.each do |user|
+    json[:members][count].store(user.name,
+                                { name: user.name,
+                                  img_url: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}?s=30",
+                                  link: user_path(user),
+                                  authenticity_token: form_authenticity_token }
+    )
+  end
+end
+json[:members][:pages] = count
+json

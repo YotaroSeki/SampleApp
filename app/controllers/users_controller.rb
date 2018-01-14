@@ -51,28 +51,37 @@ class UsersController < ApplicationController
   def following
     @title = 'Following'
     @user = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    @users = @user.following
+    respond_to do |format|
+      format.html { render 'show_follow' }
+      format.jsonld { render 'show_follow' }
+    end
   end
 
   def followers
     @title = 'Followers'
     @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    @users = @user.followers
+    respond_to do |format|
+      format.html { render 'show_follow' }
+      format.jsonld { render 'show_follow' }
+    end
   end
 
   def favorites
     @user = User.find(params[:id])
     @microposts = @user.favorite_microposts.paginate(page: params[:page])
-    render 'favorites'
+    respond_to do |format|
+      format.html { render 'favorites' }
+      format.jsonld { render 'favorites' }
+    end
   end
 
   private
 
   def user_params
     params.require(:user)
-          .permit(:name, :email, :password, :password_confirmation)
+        .permit(:name, :email, :password, :password_confirmation)
   end
 
   def correct_user

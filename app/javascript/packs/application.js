@@ -8,9 +8,20 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue';
+import Element from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/pagination.css'
+import locale from 'element-ui/lib/locale/lang/ja';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios);
+Vue.use(Element, {locale});
+
 import Navbar from '../components/shared/navbar.vue';
 import About from '../components/about/about.vue';
 import Contact from '../components/contact/contact.vue';
+import ShowFollow from '../components/follow/show-follow.vue'
 import Help from '../components/help/help.vue';
 
 const container = new Vue({
@@ -19,6 +30,7 @@ const container = new Vue({
         'Navbar': Navbar,
         'About': About,
         'Contact': Contact,
+        'ShowFollow': ShowFollow,
         'Help': Help
     }
 });

@@ -1,0 +1,16 @@
+json = {
+    following: {
+        link: following_user_path(@user),
+        count: @user.following.count
+    },
+    followers: {
+        link: followers_user_path(@user),
+        count: @user.followers.count
+    },
+    favorites: {
+        link: favorites_user_path(@user),
+        count: @user.favorites.count
+    }
+}
+p json
+json
