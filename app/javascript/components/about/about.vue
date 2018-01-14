@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<script type="text/javascript">
+<script type='text/javascript'>
 export default {
     name: 'About'
 }
