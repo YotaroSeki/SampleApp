@@ -16,9 +16,9 @@
                 {{profile.title}}
                 <template v-if='current_page !== 1'>({{current_page}} page)</template>
             </h3>
-            <users v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
-                   :current_user='profile.user'>
-            </users>
+            <users-list v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
+                        :current_user='profile.user'>
+            </users-list>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
@@ -32,9 +32,9 @@
 
 <script type='text/javascript'>
 import Stats from '../shared/stats.vue';
-import UserAvatars from '../users/user-avatars.vue';
-import UserInfo from '../shared/user-info.vue';
-import Users from '../users/users.vue';
+import UserAvatars from '../users/user_avatars.vue';
+import UserInfo from '../shared/user_info.vue';
+import UsersList from '../users/users_list.vue';
 
 
 export default {
@@ -43,7 +43,7 @@ export default {
         'Stats': Stats,
         'UserAvatars': UserAvatars,
         'UserInfo': UserInfo,
-        'Users': Users
+        'UsersList': UsersList
     },
     data() {
         return {follows: {}, stats: {}, profile: {user: {}}, current_page: 1}

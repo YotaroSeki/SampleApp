@@ -19,10 +19,10 @@ Vue.use(VueAxios, axios);
 Vue.use(Element, {locale});
 
 import Navbar from '../components/shared/navbar.vue';
-import About from '../components/about/about.vue';
-import Contact from '../components/contact/contact.vue';
-import ShowFollow from '../components/follow/show-follow.vue'
-import Help from '../components/help/help.vue';
+import About from '../components/static_pages/about.vue';
+import Contact from '../components/static_pages/contact.vue';
+import ShowFollow from '../components/follow/show_follow.vue'
+import Help from '../components/static_pages/help.vue';
 
 const container = new Vue({
     el: '.js-vue',

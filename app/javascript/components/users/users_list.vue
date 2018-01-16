@@ -9,7 +9,7 @@
 import User from './user.vue'
 
 export default {
-    name: 'Users',
+    name: 'UsersList',
     props: ['users', 'current_user'],
     components: {'User': User}
 }
