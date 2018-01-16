@@ -77,6 +77,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def navbar
+    render 'navbar'
+  end
+
   private
 
   def user_params

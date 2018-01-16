@@ -15,7 +15,4 @@ class StaticPagesController < ApplicationController
   def contact;
   end
 
-  def navbar
-    render 'navbar'
-  end
 end

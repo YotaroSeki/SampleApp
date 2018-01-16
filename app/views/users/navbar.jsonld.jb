@@ -1,11 +1,5 @@
 json = {
-    paths: {
-        root: root_path,
-        help: help_path,
-        users: users_path,
-        logout: logout_path,
-        login: login_path
-    },
+    paths: {},
     authenticity_token: form_authenticity_token,
     is_logged_in: logged_in?
 }
