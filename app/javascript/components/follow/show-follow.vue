@@ -1,30 +1,30 @@
 <template>
     <div class='row'>
         <el-aside class='col-md-4'>
-            <user-info :user_info='user_info'>
+            <user-info :profile='profile'>
             </user-info>
             <section class='stats'>
                 <stats :stats='stats'>
                 </stats>
-                <user-avatars v-if='user_info.count !== 0'
-                              :users='follows'>
+                <user-avatars v-if='profile.follow_count !== 0'
+                              :users='follows[1]'>
                 </user-avatars>
             </section>
         </el-aside>
         <div class='col-md-8'>
             <h3>
-                {{user_info.title}}
+                {{profile.title}}
                 <template v-if='current_page !== 1'>({{current_page}} page)</template>
             </h3>
-            <users v-if='follows && user_info.count !== 0' :users='follows[current_page]'
-                   :current_user='user_info.user'>
+            <users v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
+                   :current_user='profile.user'>
             </users>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
             background
             layout='prev, pager, next'
-            :total='user_info.count'
+            :total='profile.count'
             :page-size='30'/>
         </div>
     </div>
@@ -46,13 +46,13 @@ export default {
         'Users': Users
     },
     data() {
-        return {follows: {}, stats: {}, user_info: {user_icon: {}, user: {}, profile: {}, count: 0}, current_page: 1}
+        return {follows: {}, stats: {}, profile: {user: {}}, current_page: 1}
     },
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
-                this.follows = response.data.members;
-                this.user_info = response.data.user_info;
+                this.follows = response.data.follows;
+                this.profile = response.data.profile;
                 this.stats = response.data.stats
             });
     },

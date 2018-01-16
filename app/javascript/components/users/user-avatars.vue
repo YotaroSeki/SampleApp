@@ -1,10 +1,9 @@
 <template>
     <div class='user_avatars'>
-        <template v-for='page in users'>
-            <a v-for='user in page' :href='user.link'>
-                <img :src='user.img_url'/>
-            </a>
-        </template>
+        <a v-for='user in users' :href='user.link'>
+            <img :src='user.img_url'/>
+        </a>
+        and so on
     </div>
 </template>
 

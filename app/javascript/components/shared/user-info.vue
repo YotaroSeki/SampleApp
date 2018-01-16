@@ -1,13 +1,13 @@
 <template>
     <section class='user_info'>
-        <img v-if='user_info.user_icon' :src='user_info.user_icon.url'/>
-        <h1>{{user_info.user.name}}</h1>
+        <img :src='profile.user_icon'/>
+        <h1>{{profile.user.name}}</h1>
         <span>
-            <a :href='user_info.profile.link'>view my profile</a>
+            <a :href='profile.user_path'>view my profile</a>
         </span>
         <span>
             <b>Microposts:</b>
-            {{user_info.profile.microposts}}
+            {{profile.micropost_count}}
         </span>
     </section>
 </template>
@@ -15,6 +15,6 @@
 <script type='text/javascript'>
 export default {
     name: 'UserInfo',
-    props: ['user_info']
+    props: ['profile']
 }
 </script>
