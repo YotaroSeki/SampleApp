@@ -1,14 +1,14 @@
 json = {
     following: {
-        link: following_user_path(@user),
+        path: following_user_path(@user), #rename link to path!!!
         count: @user.following.count
     },
     followers: {
-        link: followers_user_path(@user),
+        path: followers_user_path(@user),
         count: @user.followers.count
     },
     favorites: {
-        link: favorites_user_path(@user),
+        path: favorites_user_path(@user),
         count: @user.favorites.count
     }
 }
