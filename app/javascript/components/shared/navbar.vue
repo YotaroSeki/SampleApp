@@ -4,19 +4,27 @@
              text-color='#fff'
              active-text-color='#ffd04b'
     >
-        <a :href='"/"' class='logo'>sample app</a>
-        <nav>
-            <ul class='nav navbar-nav navbar-right'>
+        <el-row>
+            <el-col :span='4' :offset='1'>
+                <a :href='"/"' class='logo'>sample app</a>
+            </el-col>
+            <el-col :span='1' :offset='13'>
                 <el-menu-item index='1'>
                     <a :href='"/"'>Home</a>
                 </el-menu-item>
+            </el-col>
+            <el-col :span='1'>
                 <el-menu-item index='2'>
                     <a :href='"/help"'>Help</a>
                 </el-menu-item>
-                <template v-if='is_logged_in'>
+            </el-col>
+            <template v-if='is_logged_in'>
+                <el-col :span='1'>
                     <el-menu-item index='3'>
                         <a :href='"/users"'>Users</a>
                     </el-menu-item>
+                </el-col>
+                <el-col :span='2'>
                     <el-submenu index='4'>
                         <template slot='title'>
                             Account <b class='caret'></b>
@@ -39,16 +47,18 @@
                             </form>
                         </el-menu-item>
                     </el-submenu>
-                </template>
-                <template v-else>
+                </el-col>
+            </template>
+            <template v-else>
+                <el-col :span='3'>
                     <el-menu-item index='4'>
                         <a :href='"/login"'>
                             Login
                         </a>
                     </el-menu-item>
-                </template>
-            </ul>
-        </nav>
+                </el-col>
+            </template>
+        </el-row>
     </el-menu>
 </template>
 
