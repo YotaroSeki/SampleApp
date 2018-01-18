@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def following
     @title = 'Following'
-    @user = User.find(params[:id])
+    @user = User.includes(:following).find(params[:id])
     @users = @user.following
     respond_to do |format|
       format.html { render 'show_follow' }
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   def followers
     @title = 'Followers'
-    @user = User.find(params[:id])
+    @user = User.includes(:followers).find(params[:id])
     @users = @user.followers
     respond_to do |format|
       format.html { render 'show_follow' }
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user)
-        .permit(:name, :email, :password, :password_confirmation)
+      .permit(:name, :email, :password, :password_confirmation)
   end
 
   def correct_user
