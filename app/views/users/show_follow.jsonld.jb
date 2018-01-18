@@ -11,19 +11,16 @@ json = {
 
 json[:stats] = render 'shared/stats'
 
-json[:follows] = {}
-users = @follows.each_slice(30).to_a
-count = 0
-users.each do |page|
-  count += 1
-  json[:follows][count] = {}
-  page.each do |user|
-    json[:follows][count].store(user.name,
-                                name: user.name,
-                                img_url: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}?s=30",
-                                link: user_path(user),
-                                authenticity_token: form_authenticity_token)
-  end
+follows = []
+@follows.each do |user|
+  follow_data = {
+    name: user.name,
+    img_url: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}?s=30",
+    link: user_path(user),
+    authenticity_token: form_authenticity_token
+  }
+  follows.push(follow_data)
 end
-json[:follows][:pages] = count
+json[:follows] = follows.each_slice(30).to_a
+
 json
