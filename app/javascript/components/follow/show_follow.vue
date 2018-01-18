@@ -7,14 +7,14 @@
                 <stats :stats='stats'>
                 </stats>
                 <user-avatars v-if='profile.follow_count !== 0'
-                              :users='follows[1]'>
+                              :users='follows[current_page]'>
                 </user-avatars>
             </section>
         </el-aside>
         <div class='col-md-8'>
             <h3>
                 {{profile.title}}
-                <template v-if='current_page !== 1'>({{current_page}} page)</template>
+                <template v-if='current_page !== 0'>({{current_page + 1}} page)</template>
             </h3>
             <users-list v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
                         :current_user='profile.current_user'>
@@ -46,14 +46,14 @@ export default {
         'UsersList': UsersList
     },
     data() {
-        return {follows: {}, stats: {}, profile: {current_user: {}}, current_page: 1}
+        return {follows: {}, stats: {}, profile: {current_user: {}}, current_page: 0}
     },
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
                 this.follows = response.data.follows;
                 this.profile = response.data.profile;
-                this.stats = response.data.stats
+                this.stats = response.data.stats;
             });
     },
     methods: {
@@ -61,7 +61,7 @@ export default {
             console.log(`${val} items per page`);
         },
         handleCurrentChange(val) {
-            this.current_page = val
+            this.current_page = val - 1;
         }
     },
 }
