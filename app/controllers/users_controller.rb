@@ -50,8 +50,8 @@ class UsersController < ApplicationController
 
   def following
     @title = 'Following'
-    @user = User.includes(:following).find(params[:id])
-    @users = @user.following
+    @current_user = User.includes(:following).find(params[:id])
+    @follows = @current_user.following
     respond_to do |format|
       format.html { render 'show_follow' }
       format.jsonld { render 'show_follow' }
@@ -60,8 +60,8 @@ class UsersController < ApplicationController
 
   def followers
     @title = 'Followers'
-    @user = User.includes(:followers).find(params[:id])
-    @users = @user.followers
+    @current_user = User.includes(:followers).find(params[:id])
+    @follows = @current_user.followers
     respond_to do |format|
       format.html { render 'show_follow' }
       format.jsonld { render 'show_follow' }

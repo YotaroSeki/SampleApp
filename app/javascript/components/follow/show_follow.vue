@@ -17,14 +17,14 @@
                 <template v-if='current_page !== 1'>({{current_page}} page)</template>
             </h3>
             <users-list v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
-                        :current_user='profile.user'>
+                        :current_user='profile.current_user'>
             </users-list>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
             background
             layout='prev, pager, next'
-            :total='profile.count'
+            :total='profile.follow_count'
             :page-size='30'/>
         </div>
     </div>
@@ -46,7 +46,7 @@ export default {
         'UsersList': UsersList
     },
     data() {
-        return {follows: {}, stats: {}, profile: {user: {}}, current_page: 1}
+        return {follows: {}, stats: {}, profile: {current_user: {}}, current_page: 1}
     },
     mounted: function () {
         this.axios.get(location.href + '.jsonld')

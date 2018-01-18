@@ -1,18 +1,18 @@
 json = {
   profile: {
-    user: @user,
-    user_icon: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email.downcase)}?s=80",
-    user_path: user_path(@user),
-    micropost_count: @user.microposts.count,
+    current_user: @current_user,
+    user_icon: "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(@current_user.email.downcase)}?s=80",
+    user_path: user_path(@current_user),
+    micropost_count: @current_user.microposts.count,
     title: @title,
-    follow_count: @users.count
+    follow_count: @follows.count
   }
 }
 
 json[:stats] = render 'shared/stats'
 
 json[:follows] = {}
-users = @users.each_slice(30).to_a
+users = @follows.each_slice(30).to_a
 count = 0
 users.each do |page|
   count += 1
