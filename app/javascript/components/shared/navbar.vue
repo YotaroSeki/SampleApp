@@ -18,7 +18,7 @@
                     <a href='/help'>Help</a>
                 </el-menu-item>
             </el-col>
-            <template v-if='is_logged_in'>
+            <div v-if='is_logged_in'>
                 <el-col :span='1'>
                     <el-menu-item index='3'>
                         <a href='/users'>Users</a>
@@ -26,9 +26,9 @@
                 </el-col>
                 <el-col :span='2'>
                     <el-submenu index='4'>
-                        <template slot='title'>
+                        <div slot='title'>
                             Account <b class='caret'></b>
-                        </template>
+                        </div>
                         <el-menu-item index='4-1'>
                             <a :href='paths.current_user'>
                                 Profile
@@ -40,7 +40,7 @@
                             </a>
                         </el-menu-item>
                         <el-menu-item index='4-3'>
-                            <form method='post' :action='"/logout"'>
+                            <form method='post' action='/logout'>
                                 <input type='hidden' name='_method' value='DELETE'>
                                 <input type='hidden' name='authenticity_token' :value='authenticity_token'>
                                 <input type='submit' value='logout'>
@@ -48,8 +48,8 @@
                         </el-menu-item>
                     </el-submenu>
                 </el-col>
-            </template>
-            <template v-else>
+            </div>
+            <div v-else>
                 <el-col :span='3'>
                     <el-menu-item index='4'>
                         <a href='/login'>
@@ -57,7 +57,7 @@
                         </a>
                     </el-menu-item>
                 </el-col>
-            </template>
+            </div>
         </el-row>
     </el-menu>
 </template>
@@ -66,7 +66,11 @@
 export default {
     name: 'Navbar',
     data() {
-        return {paths: {}, authenticity_token: '', is_logged_in: false}
+        return {
+            paths: {},
+            authenticity_token: '',
+            is_logged_in: false
+        }
     },
     mounted: function () {
         this.axios.get('/users/navbar.jsonld')

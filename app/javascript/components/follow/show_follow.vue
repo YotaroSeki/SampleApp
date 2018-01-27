@@ -46,7 +46,12 @@ export default {
         'UsersList': UsersList
     },
     data() {
-        return {follows: {}, stats: {}, profile: {current_user: {}}, current_page: 0}
+        return {
+            follows: {},
+            stats: {},
+            profile: {current_user: {}},
+            current_page: 0
+        }
     },
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
