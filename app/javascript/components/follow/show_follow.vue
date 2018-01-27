@@ -1,14 +1,14 @@
 <template>
     <div class='row'>
         <el-aside class='col-md-4'>
-            <user-info :profile='profile'>
-            </user-info>
+            <user-profile :profile='profile'>
+            </user-profile>
             <section class='stats'>
-                <stats :stats='stats'>
-                </stats>
-                <user-avatars v-if='profile.follow_count !== 0'
-                              :users='follows[current_page]'>
-                </user-avatars>
+                <statistics :statistics='statistics'>
+                </statistics>
+                <follows-avatars v-if='profile.follow_count !== 0'
+                                 :follows='follows[current_page]'>
+                </follows-avatars>
             </section>
         </el-aside>
         <div class='col-md-8'>
@@ -31,24 +31,24 @@
 </template>
 
 <script type='text/javascript'>
-import Stats from '../shared/stats.vue';
-import UserAvatars from '../users/user_avatars.vue';
-import UserInfo from '../shared/user_info.vue';
+import Statistics from '../shared/statistics.vue';
+import FollowsAvatars from '../users/follows_avatars.vue';
+import UserProfile from '../shared/user_profile.vue';
 import UsersList from '../users/users_list.vue';
 
 
 export default {
-    name: 'Follow',
+    name: 'FollowsList',
     components: {
-        'Stats': Stats,
-        'UserAvatars': UserAvatars,
-        'UserInfo': UserInfo,
+        'Statistics': Statistics,
+        'FollowsAvatars': FollowsAvatars,
+        'UserProfile': UserProfile,
         'UsersList': UsersList
     },
     data() {
         return {
             follows: {},
-            stats: {},
+            statistics: {},
             profile: {current_user: {}},
             current_page: 0
         }
@@ -58,7 +58,7 @@ export default {
             .then((response) => {
                 this.follows = response.data.follows;
                 this.profile = response.data.profile;
-                this.stats = response.data.stats;
+                this.statistics = response.data.statistics;
             });
     },
     methods: {

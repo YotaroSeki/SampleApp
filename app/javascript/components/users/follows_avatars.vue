@@ -1,6 +1,6 @@
 <template>
     <div class='user_avatars'>
-        <a v-for='user in users' :href='user.link'>
+        <a v-for='user in follows' :href='user.link'>
             <img :src='user.img_url'/>
         </a>
         and so on
@@ -9,7 +9,7 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'UserAvatars',
-    props: ['users']
+    name: 'FollowsAvatars',
+    props: ['follows']
 }
 </script>

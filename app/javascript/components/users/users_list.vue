@@ -6,7 +6,7 @@
 </template>
 
 <script type='text/javascript'>
-import User from './users_list_item.vue'
+import UsersListItem from './users_list_item.vue'
 
 export default {
     name: 'UsersList',

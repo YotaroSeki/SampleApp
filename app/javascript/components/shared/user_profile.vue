@@ -14,7 +14,7 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'UserInfo',
+    name: 'UserProfile',
     props: ['profile']
 }
 </script>
