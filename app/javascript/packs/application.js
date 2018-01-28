@@ -20,7 +20,7 @@ Vue.use(Element, {locale});
 import TheHeader from '../components/shared/the_header.vue';
 import TheAbout from '../components/static_pages/the_about.vue';
 import TheContact from '../components/static_pages/the_contact.vue';
-import ShowFollow from '../components/follow/show_follow.vue'
+import TheFollowsList from '../components/follow/the_follows_list.vue'
 import TheHelp from '../components/static_pages/the_help.vue';
 
 const container = new Vue({
@@ -29,7 +29,7 @@ const container = new Vue({
         'TheHeader': TheHeader,
         'TheAbout': TheAbout,
         'TheContact': TheContact,
-        'ShowFollow': ShowFollow,
+        'TheFollowsList': TheFollowsList,
         'TheHelp': TheHelp
     }
 });

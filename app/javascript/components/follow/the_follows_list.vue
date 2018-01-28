@@ -4,8 +4,11 @@
             <user-profile :profile='profile'>
             </user-profile>
             <section class='stats'>
-                <statistics :statistics='statistics'>
-                </statistics>
+                <follow-and-favorite-statistics :following='statistics.following'
+                                                :followers='statistics.followers'
+                                                :favorites='statistics.favorites'
+                >
+                </follow-and-favorite-statistics>
                 <follow-avatars v-if='profile.follow_count !== 0'
                                 :follows='follows[current_page]'>
                 </follow-avatars>
@@ -31,16 +34,16 @@
 </template>
 
 <script type='text/javascript'>
-import Statistics from '../shared/statistics.vue';
+import FollowAndFavoriteStatistics from '../shared/follow_and_favorite_statistics.vue';
 import FollowAvatars from '../users/follow_avatars.vue';
 import UserProfile from '../shared/user_profile.vue';
 import UsersList from '../users/users_list.vue';
 
 
 export default {
-    name: 'FollowsList',
+    name: 'TheFollowsList',
     components: {
-        'Statistics': Statistics,
+        'FollowAndFavoriteStatistics': FollowAndFavoriteStatistics,
         'FollowAvatars': FollowAvatars,
         'UserProfile': UserProfile,
         'UsersList': UsersList
@@ -49,7 +52,9 @@ export default {
         return {
             follows: {},
             statistics: {},
-            profile: {current_user: {}},
+            profile: {
+                current_user: {}
+            },
             current_page: 0
         }
     },

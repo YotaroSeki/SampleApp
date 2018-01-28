@@ -1,15 +1,18 @@
 json = {
   following: {
     path: following_user_path(@current_user),
-    count: @current_user.following.count
+    count: @current_user.following.count,
+    type: 'following'
   },
   followers: {
     path: followers_user_path(@current_user),
-    count: @current_user.followers.count
+    count: @current_user.followers.count,
+    type: 'followers'
   },
   favorites: {
     path: favorites_user_path(@current_user),
-    count: @current_user.favorites.count
+    count: @current_user.favorites.count,
+    type: 'favorites'
   }
 }
 json
