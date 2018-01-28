@@ -6,9 +6,9 @@
             <section class='stats'>
                 <statistics :statistics='statistics'>
                 </statistics>
-                <follows-avatars v-if='profile.follow_count !== 0'
-                                 :follows='follows[current_page]'>
-                </follows-avatars>
+                <follow-avatars v-if='profile.follow_count !== 0'
+                                :follows='follows[current_page]'>
+                </follow-avatars>
             </section>
         </el-aside>
         <div class='col-md-8'>
@@ -32,7 +32,7 @@
 
 <script type='text/javascript'>
 import Statistics from '../shared/statistics.vue';
-import FollowsAvatars from '../users/follows_avatars.vue';
+import FollowAvatars from '../users/follow_avatars.vue';
 import UserProfile from '../shared/user_profile.vue';
 import UsersList from '../users/users_list.vue';
 
@@ -41,7 +41,7 @@ export default {
     name: 'FollowsList',
     components: {
         'Statistics': Statistics,
-        'FollowsAvatars': FollowsAvatars,
+        'FollowAvatars': FollowAvatars,
         'UserProfile': UserProfile,
         'UsersList': UsersList
     },

@@ -9,7 +9,7 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'FollowsAvatars',
+    name: 'FollowAvatars',
     props: ['follows']
 }
 </script>
