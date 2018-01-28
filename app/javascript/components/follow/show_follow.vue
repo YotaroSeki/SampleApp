@@ -62,11 +62,10 @@ export default {
             });
     },
     methods: {
-        handleSizeChange(val) {
-            console.log(`${val} items per page`);
-        },
         handleCurrentChange(val) {
             this.current_page = val - 1;
+        },
+        handleSizeChange(val) {
         }
     },
 }

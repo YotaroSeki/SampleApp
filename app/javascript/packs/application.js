@@ -17,19 +17,19 @@ import VueAxios from 'vue-axios';
 Vue.use(VueAxios, axios);
 Vue.use(Element, {locale});
 
-import Navbar from '../components/shared/navbar.vue';
-import About from '../components/static_pages/about.vue';
-import Contact from '../components/static_pages/contact.vue';
+import TheHeader from '../components/shared/the_header.vue';
+import TheAbout from '../components/static_pages/the_about.vue';
+import TheContact from '../components/static_pages/the_contact.vue';
 import ShowFollow from '../components/follow/show_follow.vue'
-import Help from '../components/static_pages/help.vue';
+import TheHelp from '../components/static_pages/the_help.vue';
 
 const container = new Vue({
     el: '.js-vue',
     components: {
-        'Navbar': Navbar,
-        'About': About,
-        'Contact': Contact,
+        'TheHeader': TheHeader,
+        'TheAbout': TheAbout,
+        'TheContact': TheContact,
         'ShowFollow': ShowFollow,
-        'Help': Help
+        'TheHelp': TheHelp
     }
 });

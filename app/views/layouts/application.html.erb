@@ -11,7 +11,7 @@
 </head>
 <body>
 <el-container class='js-vue'>
-  <navbar></navbar>
+  <the-header></the-header>
   <el-main>
     <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

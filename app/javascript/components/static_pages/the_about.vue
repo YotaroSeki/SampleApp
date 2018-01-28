@@ -14,6 +14,6 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'About'
+    name: 'TheAbout'
 }
 </script>

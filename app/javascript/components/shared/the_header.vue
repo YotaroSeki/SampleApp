@@ -64,7 +64,7 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'Navbar',
+    name: 'TheHeader',
     data() {
         return {
             paths: {},
