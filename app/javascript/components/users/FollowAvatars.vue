@@ -10,6 +10,8 @@
 <script type='text/javascript'>
 export default {
     name: 'FollowAvatars',
-    props: ['follows']
+    props: {
+        'follows': {type: Array}
+    }
 }
 </script>

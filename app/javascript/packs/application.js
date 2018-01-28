@@ -17,11 +17,11 @@ import VueAxios from 'vue-axios';
 Vue.use(VueAxios, axios);
 Vue.use(Element, {locale});
 
-import TheHeader from '../components/shared/the_header.vue';
-import TheAbout from '../components/static_pages/the_about.vue';
-import TheContact from '../components/static_pages/the_contact.vue';
-import TheFollowsList from '../components/follow/the_follows_list.vue'
-import TheHelp from '../components/static_pages/the_help.vue';
+import TheHeader from '../components/shared/TheHeader.vue';
+import TheAbout from '../components/static_pages/TheAbout.vue';
+import TheContact from '../components/static_pages/TheContact.vue';
+import TheFollowsList from '../components/follow/TheFollowsList.vue'
+import TheHelp from '../components/static_pages/TheHelp.vue';
 
 const container = new Vue({
     el: '.js-vue',

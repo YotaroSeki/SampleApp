@@ -10,16 +10,17 @@
                 >
                 </follow-and-favorite-statistics>
                 <follow-avatars v-if='profile.follow_count !== 0'
-                                :follows='follows[current_page]'>
+                                :follows='follows_list[current_page]'>
                 </follow-avatars>
             </section>
         </el-aside>
         <div class='col-md-8'>
             <h3>
                 {{profile.title}}
-                <template v-if='current_page !== 0'>({{current_page + 1}} page)</template>
+                <template v-if='current_page !== 0'>({{ current_page + 1 }} page)</template>
             </h3>
-            <users-list v-if='follows && profile.follow_count !== 0' :users='follows[current_page]'
+            <users-list v-if='follows_list && profile.follow_count !== 0'
+                        :users='follows_list[current_page]'
                         :current_user='profile.current_user'>
             </users-list>
             <el-pagination
@@ -34,10 +35,10 @@
 </template>
 
 <script type='text/javascript'>
-import FollowAndFavoriteStatistics from '../shared/follow_and_favorite_statistics.vue';
-import FollowAvatars from '../users/follow_avatars.vue';
-import UserProfile from '../shared/user_profile.vue';
-import UsersList from '../users/users_list.vue';
+import FollowAndFavoriteStatistics from '../shared/FollowAndFavoriteStatistics.vue';
+import FollowAvatars from '../users/FollowAvatars.vue';
+import UserProfile from '../shared/UserProfile.vue';
+import UsersList from '../users/UsersList.vue';
 
 
 export default {
@@ -50,7 +51,7 @@ export default {
     },
     data() {
         return {
-            follows: {},
+            follows_list: {},
             statistics: {},
             profile: {
                 current_user: {}
@@ -61,7 +62,7 @@ export default {
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
-                this.follows = response.data.follows;
+                this.follows_list = response.data.follows;
                 this.profile = response.data.profile;
                 this.statistics = response.data.statistics;
             });

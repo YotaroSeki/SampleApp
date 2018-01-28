@@ -6,9 +6,13 @@
     >
         <el-row>
             <el-col :span='4' :offset='1'>
-                <a href='/' class='logo'>sample app</a>
+                <a href='/'
+                   class='logo'>
+                    sample app
+                </a>
             </el-col>
-            <el-col :span='1' :offset='13'>
+            <el-col :span='1'
+                    :offset='13'>
                 <el-menu-item index='1'>
                     <a href='/'>Home</a>
                 </el-menu-item>
@@ -41,9 +45,14 @@
                         </el-menu-item>
                         <el-menu-item index='4-3'>
                             <form method='post' action='/logout'>
-                                <input type='hidden' name='_method' value='DELETE'>
-                                <input type='hidden' name='authenticity_token' :value='authenticity_token'>
-                                <input type='submit' value='logout'>
+                                <input type='hidden'
+                                       name='_method'
+                                       value='DELETE'>
+                                <input type='hidden'
+                                       name='authenticity_token'
+                                       :value='authenticity_token'>
+                                <input type='submit'
+                                       value='logout'>
                             </form>
                         </el-menu-item>
                     </el-submenu>

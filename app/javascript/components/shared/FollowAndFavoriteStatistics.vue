@@ -10,11 +10,15 @@
 </template>
 
 <script type='text/javascript'>
-import FollowAndFavoriteStatisticsItem from './follow_and_favorite_statistics_item.vue'
+import FollowAndFavoriteStatisticsItem from './StatisticsItem.vue'
 
 export default {
     name: 'FollowAndFavoriteStatistics',
-    props: ['following', 'followers', 'favorites'],
+    props: {
+        'following': {type: Object},
+        'followers': {type: Object},
+        'favorites': {type: Object}
+        },
     components: {
         'FollowAndFavoriteStatisticsItem': FollowAndFavoriteStatisticsItem
     }
