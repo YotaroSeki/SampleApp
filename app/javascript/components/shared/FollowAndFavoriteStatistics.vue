@@ -10,7 +10,7 @@
 </template>
 
 <script type='text/javascript'>
-import FollowAndFavoriteStatisticsItem from './StatisticsItem.vue'
+import FollowAndFavoriteStatisticsItem from './FollowAndFavoriteStatisticsItem.vue'
 
 export default {
     name: 'FollowAndFavoriteStatistics',
