@@ -1,0 +1,25 @@
+json = {
+  profile: {
+    current_user: @current_user,
+    user_icon: gravatar_url(@current_user),
+    user_path: user_path(@current_user),
+    micropost_count: @current_user.microposts.count,
+    title: @title,
+    follow_count: @follows.count
+  }
+}
+
+json[:statistics] = render 'user_statistics'
+
+follows_list =@follows.map do |user|
+  {
+    name: user.name,
+    img_url: gravatar_url(user, size: 30),
+    link: user_path(user),
+    authenticity_token: form_authenticity_token
+  }
+end
+
+json[:follows] = follows_list.each_slice(30).to_a
+
+json

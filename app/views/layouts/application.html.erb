@@ -6,20 +6,23 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<div class="container">
-  <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <% end %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
-  <%= debug(params) if Rails.env.development? %>
-</div>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<el-container class='js-vue'>
+  <the-header></the-header>
+  <el-main>
+    <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
+    <%= yield %>
+  </el-main>
+  <el-footer>
+    <%= render 'layouts/footer' %>
+  </el-footer>
+</el-container>
+<%= debug(params) if Rails.env.development? %>
 <%= javascript_pack_tag 'application' %>
 </body>
 </html>

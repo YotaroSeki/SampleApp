@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rails', '~> 5.1.4'
 gem 'webpacker', github: 'rails/webpacker'
+gem 'jb'
 gem 'will_paginate'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -56,6 +57,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
+  gem 'bullet'
 end
 
 group :test do
