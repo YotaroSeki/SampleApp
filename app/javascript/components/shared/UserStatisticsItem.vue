@@ -13,7 +13,7 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'FollowAndFavoriteStatisticsItem',
+    name: 'UserStatisticsItem',
     props: {
         'statistics': {
             type: Object
