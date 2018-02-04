@@ -9,7 +9,7 @@ json = {
   }
 }
 
-json[:statistics] = render 'statistics'
+json[:statistics] = render 'user_statistics'
 
 follows_list =@follows.map do |user|
   {
