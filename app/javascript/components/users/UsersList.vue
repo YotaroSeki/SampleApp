@@ -3,8 +3,7 @@
         <users-list-item v-for='user in users'
                          :user='user'
                          :current_user='current_user'
-                         :key='user.id'>
-        </users-list-item>
+                         :key='user.id'/>
     </ul>
 </template>
 

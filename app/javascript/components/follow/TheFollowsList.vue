@@ -1,28 +1,23 @@
 <template>
     <div class='row'>
         <el-aside class='col-md-4'>
-            <user-profile :profile='profile'>
-            </user-profile>
+            <user-profile :profile='profile'/>
             <section class='stats'>
                 <follow-and-favorite-statistics :following='statistics.following'
                                                 :followers='statistics.followers'
-                                                :favorites='statistics.favorites'
-                >
-                </follow-and-favorite-statistics>
+                                                :favorites='statistics.favorites'/>
                 <follow-avatars v-if='profile.follow_count !== 0'
-                                :follows='follows_list[current_page]'>
-                </follow-avatars>
+                                :follows='follows_list[current_page]'/>
             </section>
         </el-aside>
         <div class='col-md-8'>
             <h3>
                 {{profile.title}}
-                <template v-if='current_page !== 0'>({{ current_page + 1 }} page)</template>
+                <div v-if='current_page !== 0'>({{ current_page + 1 }} page)</div>
             </h3>
             <users-list v-if='follows_list && profile.follow_count !== 0'
                         :users='follows_list[current_page]'
-                        :current_user='profile.current_user'>
-            </users-list>
+                        :current_user='profile.current_user'/>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
@@ -35,7 +30,7 @@
 </template>
 
 <script type='text/javascript'>
-import FollowAndFavoriteStatistics from '../shared/FollowAndFavoriteStatistics.vue';
+import FollowAndFavoriteStatistics from '../shared/UserStatistics.vue';
 import FollowAvatars from '../users/FollowAvatars.vue';
 import UserProfile from '../shared/UserProfile.vue';
 import UsersList from '../users/UsersList.vue';
