@@ -1,18 +1,18 @@
 <template>
-    <div class='row'>
-        <el-aside class='col-md-4'>
+    <page-layout>
+        <div slot='aside'>
             <user-profile :profile='profile'/>
             <section class='stats'>
-                <follow-and-favorite-statistics :following='statistics.following'
-                                                :followers='statistics.followers'
-                                                :favorites='statistics.favorites'/>
+                <user-statistics :following='statistics.following'
+                                 :followers='statistics.followers'
+                                 :favorites='statistics.favorites'/>
                 <follow-avatars v-if='profile.follow_count !== 0'
                                 :follows='follows_list[current_page]'/>
             </section>
-        </el-aside>
-        <div class='col-md-8'>
+        </div>
+        <div slot='main-contents'>
             <h3>
-                {{profile.title}}
+                {{ profile.title }}
                 <div v-if='current_page !== 0'>({{ current_page + 1 }} page)</div>
             </h3>
             <users-list v-if='follows_list && profile.follow_count !== 0'
@@ -26,11 +26,12 @@
             :total='profile.follow_count'
             :page-size='30'/>
         </div>
-    </div>
+    </page-layout>
 </template>
 
 <script type='text/javascript'>
-import FollowAndFavoriteStatistics from '../shared/UserStatistics.vue';
+import PageLayout from '../shared/PageLayout.vue';
+import UserStatistics from '../shared/UserStatistics.vue';
 import FollowAvatars from '../users/FollowAvatars.vue';
 import UserProfile from '../shared/UserProfile.vue';
 import UsersList from '../users/UsersList.vue';
@@ -39,7 +40,8 @@ import UsersList from '../users/UsersList.vue';
 export default {
     name: 'TheFollowsList',
     components: {
-        'FollowAndFavoriteStatistics': FollowAndFavoriteStatistics,
+        'PageLayout': PageLayout,
+        'UserStatistics': UserStatistics,
         'FollowAvatars': FollowAvatars,
         'UserProfile': UserProfile,
         'UsersList': UsersList
