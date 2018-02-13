@@ -20,8 +20,12 @@ Vue.use(Element, {locale});
 import TheHeader from '../components/shared/TheHeader.vue';
 import TheAbout from '../components/static_pages/TheAbout.vue';
 import TheContact from '../components/static_pages/TheContact.vue';
-import TheFollowsList from '../components/follow/TheFollowsList.vue'
+import TheFollowsList from '../components/follow/TheFollowsList.vue';
+import TheFavoritesList from '../components/favorites/TheFavoritesList.vue';
 import TheHelp from '../components/static_pages/TheHelp.vue';
+
+const csrf_token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = csrf_token
 
 const container = new Vue({
     el: '.js-vue',
@@ -30,6 +34,7 @@ const container = new Vue({
         'TheAbout': TheAbout,
         'TheContact': TheContact,
         'TheFollowsList': TheFollowsList,
+        'TheFavoritesList': TheFavoritesList,
         'TheHelp': TheHelp
     }
 });
