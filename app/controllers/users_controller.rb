@@ -44,8 +44,6 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
-    redirect_back(fallback_location: root_path)
   end
 
   def following
@@ -69,8 +67,9 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @user = User.find(params[:id])
-    @microposts = @user.favorite_microposts.paginate(page: params[:page])
+    @title = 'Favorites'
+    @current_user = User.find(params[:id])
+    @favorite_microposts = @current_user.favorite_microposts.includes(:user)
     respond_to do |format|
       format.html { render 'favorites' }
       format.jsonld { render 'favorites' }
