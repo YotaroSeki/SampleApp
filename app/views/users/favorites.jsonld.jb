@@ -11,9 +11,10 @@ json = {
 
 json[:statistics] = render 'user_statistics'
 
-favorites_list = @favorite_microposts.map do |micropost|
+favorites_list = @favorite_microposts.map.with_index do |micropost, id|
   favorite_id = Favorite.where('(user_id = ?) AND (micropost_id = ?)', @current_user.id, micropost.id).ids
   {
+    id: id,
     writer: micropost.user,
     writer_name: micropost.user.name,
     writer_avatar_url: gravatar_url(micropost.user, size: 50),

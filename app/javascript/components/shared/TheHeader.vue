@@ -31,7 +31,7 @@
                 <el-col :span='2'>
                     <el-submenu index='4'>
                         <div slot='title'>
-                            Account <b class='caret'></b>
+                            Account <b class='caret'/>
                         </div>
                         <el-menu-item index='4-1'>
                             <a :href='paths.current_user'>
@@ -44,32 +44,26 @@
                             </a>
                         </el-menu-item>
                         <el-menu-item index='4-3'>
-                            <form method='post' action='/logout'>
-                                <input type='hidden'
-                                       name='_method'
-                                       value='DELETE'>
-                                <input type='hidden'
-                                       name='authenticity_token'
-                                       :value='authenticity_token'>
-                                <input type='submit'
-                                       value='logout'>
-                            </form>
-                        </el-menu-item>
-                    </el-submenu>
-                </el-col>
-            </div>
-            <div v-else>
-                <el-col :span='3'>
-                    <el-menu-item index='4'>
-                        <a href='/login'>
-                            Login
-                        </a>
+                            <button
+                            @click='logout'>
+                            Logout
+                        </button>
                     </el-menu-item>
-                </el-col>
-            </div>
-        </el-row>
-    </el-menu>
-</template>
+                </el-submenu>
+            </el-col>
+        </div>
+        <div v-else>
+            <el-col :span='3'>
+                <el-menu-item index='4'>
+                    <a href='/login'>
+                        Login
+                    </a>
+                </el-menu-item>
+            </el-col>
+        </div>
+    </el-row>
+</el-menu>
+        </template>
 
 <script type='text/javascript'>
 export default {
@@ -88,6 +82,23 @@ export default {
                 this.authenticity_token = response.data.authenticity_token
                 this.is_logged_in = response.data.is_logged_in
             });
+    },
+    methods: {
+        logout() {
+            this.axios.delete('/logout')
+                .then(() => {
+                    this.$notify({
+                        title: 'Success',
+                        message: 'Logout Succeed!',
+                        type: 'success'
+                    });
+                    this.is_logged_in = false;
+                    location.reload();
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
     }
 }
 </script>

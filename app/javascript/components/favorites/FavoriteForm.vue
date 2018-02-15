@@ -13,12 +13,16 @@ export default {
     },
     methods: {
         cancel_favorite() {
-            console.log('po')
             this.axios.delete(this.micropost.cancel_favorite_path)
-                .then()
-                .catch(function (error) {
+                .then(() => {
+                    this.$notify({
+                        title: 'Success',
+                        message: 'favorite canceled!',
+                        type: 'success'
+                    })
                 })
-            console.log('meu')
+                .catch(function (error) {
+                });
         }
     }
 }

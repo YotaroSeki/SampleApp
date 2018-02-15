@@ -1,9 +1,11 @@
 <template>
     <ul class='users favorites'>
-        <microposts-list-item v-for='micropost in microposts'
-                              :current_user='current_user'
-                              :micropost='micropost'
-                              :key='micropost.id'/>
+        <microposts-list-item
+        @micropost-deleted='delete_micropost_at'
+        v-for='micropost in microposts'
+        :current_user='current_user'
+        :micropost='micropost'
+        :key='micropost.id'/>
     </ul>
 </template>
 
@@ -18,6 +20,11 @@ export default {
     props: {
         'current_user': {type: Object},
         'microposts': {type: Array}
+    },
+    methods: {
+        delete_micropost_at(id) {
+            this.microposts.splice(id, 1)
+        }
     }
 }
 </script>

@@ -19,13 +19,13 @@ export default {
     methods: {
         delete_micropost() {
             this.axios.delete(this.micropost_link)
-                .then((response) => {
+                .then(() => {
                     this.$notify({
                         title: 'Success',
                         message: 'micropost deleted!',
                         type: 'success'
                     });
-                    this.$emit('deleted', 'popopo');
+                    this.$emit('micropost-deleted');
                 })
                 .catch(function (error) {
                     console.log(error)

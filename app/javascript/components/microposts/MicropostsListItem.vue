@@ -7,9 +7,11 @@
                            :picture_url='micropost.picture_url'/>
         <micropost-timestamp :timestamp='micropost.timestamp'/>
         <favorite-form :micropost='micropost'/>
-        <micropost-delete-form v-if='current_user.admin'
-                               :micropost_link='micropost.link'/>
-        <div @deleted='deleted'/>
+        <micropost-delete-form
+        @micropost-deleted='micropost_deleted'
+        v-if='current_user.admin'
+        :micropost_link='micropost.link'
+        />
     </li>
 </template>
 
@@ -34,12 +36,8 @@ export default {
         'MicropostWriter': MicropostWriter
     },
     methods: {
-        deleted() {
-            this.$notify({
-                title: 'Meu',
-                message: 'PO!',
-                type: 'warn'
-            });
+        micropost_deleted() {
+            this.$emit('micropost-deleted', this.micropost.id)
         }
     }
 }
