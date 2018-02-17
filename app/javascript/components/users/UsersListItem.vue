@@ -4,18 +4,10 @@
         <a :href='user.link'>
             {{ user.name }}
         </a>
-        <form v-if='current_user.admin'
-              method='post'
-              :action='user.link'>
-            <input type='hidden'
-                   name='_method'
-                   value='DELETE'>
-            <input type='hidden'
-                   name='authenticity_token'
-                   :value='user.authenticity_token'>
-            <input type='submit'
-                   value='delete'>
-        </form>
+        <button v-if='current_user.admin'
+        @click='delete_user'>
+            delete user
+        </button>
     </li>
 </template>
 
@@ -23,8 +15,25 @@
 export default {
     name: 'UsersListItem',
     props: {
-        'user': {type: Object},
-        'current_user': {type: Object}
+        'user': Object,
+        'current_user': Object,
+        'index': Number
+    },
+    methods: {
+        delete_user() {
+            this.axios.delete(this.user.link)
+                .then(() => {
+                    this.$notify({
+                        title: 'Success',
+                        message: 'user deleted!',
+                        type: 'success'
+                    });
+                    this.$emit('user-deleted', this.index)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
     }
 }
 </script>

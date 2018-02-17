@@ -1,0 +1,31 @@
+json = {
+  profile: {
+    current_user: @current_user,
+    user_icon: gravatar_url(@current_user),
+    user_path: user_path(@current_user),
+    micropost_count: @current_user.microposts.count,
+    title: @title,
+    favorites_count: @favorite_microposts.count
+  }
+}
+
+json[:statistics] = render 'user_statistics'
+
+favorites_list = @favorite_microposts.map do |micropost|
+  {
+    writer: micropost.user,
+    writer_name: micropost.user.name,
+    writer_avatar_url: gravatar_url(micropost.user, size: 50),
+    writer_link: user_path(micropost.user),
+    content: micropost.content,
+    link: micropost_path(micropost),
+    picture_url: micropost.picture.url,
+    timestamp: time_ago_in_words(micropost.created_at),
+    liked: true,
+    favorite_path: micropost_favorites_path(micropost.id)
+  }
+end
+
+json[:favorites] = favorites_list.each_slice(30).to_a
+
+json

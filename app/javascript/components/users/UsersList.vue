@@ -1,9 +1,12 @@
 <template>
     <ul class='users follow'>
-        <users-list-item v-for='user in users'
-                         :user='user'
-                         :current_user='current_user'
-                         :key='user.id'/>
+        <UsersListItem
+        @user-deleted='remove_user_at'
+        v-for='(user, index) in users'
+        :user='user'
+        :current_user='current_user'
+        :key='index'
+        :index='index'/>
     </ul>
 </template>
 
@@ -12,10 +15,15 @@ import UsersListItem from './UsersListItem.vue'
 
 export default {
     name: 'UsersList',
+    components: {'UsersListItem': UsersListItem},
     props: {
-        'users': {type: Array},
-        'current_user': {type: Object}
+        'users': Array,
+        'current_user': Object
     },
-    components: {'UsersListItem': UsersListItem}
+    methods: {
+        remove_user_at(id) {
+            this.users.splice(id, 1)
+        }
+    }
 }
 </script>

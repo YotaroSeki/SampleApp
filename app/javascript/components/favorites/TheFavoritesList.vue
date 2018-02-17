@@ -6,8 +6,6 @@
                 <UserStatistics :following='statistics.following'
                                 :followers='statistics.followers'
                                 :favorites='statistics.favorites'/>
-                <FollowAvatars v-if='profile.follow_count !== 0'
-                               :follows='follows_list[current_page]'/>
             </section>
         </div>
         <div slot='main-contents'>
@@ -15,15 +13,14 @@
                 {{ profile.title }}
                 <div v-if='current_page !== 0'>({{ current_page + 1 }} page)</div>
             </h3>
-            <UsersList v-if='follows_list && profile.follow_count !== 0'
-                       :users='follows_list[current_page]'
-                       :current_user='profile.current_user'/>
+            <MicropostsList v-if='favorites_list && profile.favorites_count !== 0'
+                            :current_user='profile.current_user'
+                            :microposts='favorites_list[current_page]'/>
             <el-pagination
-            @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
             background
             layout='prev, pager, next'
-            :total='profile.follow_count'
+            :total='profile.favorites_count'
             :page-size='30'/>
         </div>
     </TwoColumn>
@@ -31,35 +28,32 @@
 
 <script type='text/javascript'>
 import TwoColumn from '../shared/TwoColumn.vue';
-import UserStatistics from '../shared/UserStatistics.vue';
-import FollowAvatars from '../users/FollowAvatars.vue';
+import MicropostsList from '../microposts/MicropostsList.vue';
 import UserProfile from '../shared/UserProfile.vue';
-import UsersList from '../users/UsersList.vue';
-
+import UserStatistics from '../shared/UserStatistics.vue';
 
 export default {
-    name: 'TheFollowsList',
+    name: 'TheFavoritesList',
     components: {
         'TwoColumn': TwoColumn,
-        'UserStatistics': UserStatistics,
-        'FollowAvatars': FollowAvatars,
+        'MicropostsList': MicropostsList,
         'UserProfile': UserProfile,
-        'UsersList': UsersList
+        'UserStatistics': UserStatistics
     },
     data() {
         return {
-            follows_list: {},
-            statistics: {},
+            current_page: 0,
+            favorites_list: [],
             profile: {
                 current_user: {}
             },
-            current_page: 0
+            statistics: {}
         }
     },
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
-                this.follows_list = response.data.follows;
+                this.favorites_list = response.data.favorites;
                 this.profile = response.data.profile;
                 this.statistics = response.data.statistics;
             });
@@ -67,9 +61,7 @@ export default {
     methods: {
         handleCurrentChange(val) {
             this.current_page = val - 1;
-        },
-        handleSizeChange(val) {
         }
-    },
+    }
 }
 </script>
