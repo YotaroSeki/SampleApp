@@ -10,15 +10,17 @@
             <MicropostTimestamp :timestamp='micropost.timestamp'/>
             <FavoriteCancelForm v-if='micropost.liked'
             @favorite-canceled='favorite_canceled'
-            :micropost='micropost'/>
+            :micropost='micropost'
+            :index='index'/>
             <FavoriteForm v-else
             @favorite-succeed='favorite_succeed'
-            :micropost='micropost'/>
+            :micropost='micropost'
+            :index='index'/>
             <MicropostDeleteForm
             @micropost-deleted='remove_micropost_from_list'
             v-if='current_user.admin'
             :micropost_link='micropost.link'
-            />
+            :index='index'/>
         </li>
     </div>
 </template>
@@ -43,17 +45,18 @@ export default {
     },
     props: {
         'current_user': Object,
-        'micropost': Object
+        'micropost': Object,
+        'index': Number
     },
     methods: {
         remove_micropost_from_list() {
-            this.$emit('remove-micropost-from-list', this.micropost.id)
+            this.$emit('remove-micropost-from-list', this.index)
         },
         favorite_canceled() {
-            this.$emit('favorite-canceled', this.micropost.id)
+            this.$emit('favorite-canceled', this.index)
         },
         favorite_succeed() {
-            this.$emit('favorite-succeed', this.micropost.id)
+            this.$emit('favorite-succeed', this.index)
         }
     }
 }

@@ -11,9 +11,8 @@ json = {
 
 json[:statistics] = render 'user_statistics'
 
-follows_list =@follows.map.with_index do |user, id|
+follows_list = @follows.map do |user|
   {
-    id: id,
     name: user.name,
     img_url: gravatar_url(user, size: 30),
     link: user_path(user),

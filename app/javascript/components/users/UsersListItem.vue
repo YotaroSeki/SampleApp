@@ -6,17 +6,18 @@
         </a>
         <button v-if='current_user.admin'
         @click='delete_user'>
-        delete user
-    </button>
-</li>
-        </template>
+            delete user
+        </button>
+    </li>
+</template>
 
 <script type='text/javascript'>
 export default {
     name: 'UsersListItem',
     props: {
-        'user': {type: Object},
-        'current_user': {type: Object}
+        'user': Object,
+        'current_user': Object,
+        'index': Number
     },
     methods: {
         delete_user() {
@@ -27,7 +28,7 @@ export default {
                         message: 'user deleted!',
                         type: 'success'
                     });
-                    this.$emit('user-deleted', this.user.id)
+                    this.$emit('user-deleted', this.index)
                 })
                 .catch((error) => {
                     console.log(error)

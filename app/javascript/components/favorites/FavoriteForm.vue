@@ -11,19 +11,19 @@
 export default {
     name: 'FavoriteForm',
     props: {
-        micropost: Object
+        micropost: Object,
+        index: Number
     },
     methods: {
         favorite() {
             this.axios.post(this.micropost.favorite_path)
                 .then((res) => {
-                    console.log(res);
                     this.$notify({
                         title: 'Success',
                         message: 'favorite succeed!',
                         type: 'success'
                     });
-                    this.$emit('favorite-succeed', this.micropost.id)
+                    this.$emit('favorite-succeed', this.index)
                 })
                 .catch((error) => {
                     console.log(error);

@@ -4,10 +4,11 @@
         @remove-micropost-from-list='remove_micropost_at'
         @favorite-canceled='favorite_canceled_at'
         @favorite-succeed='favorite_succeed_at'
-        v-for='micropost in microposts'
+        v-for='(micropost, index) in microposts'
         :current_user='current_user'
         :micropost='micropost'
-        :key='micropost.id'/>
+        :key='index'
+        :index='index'/>
     </ul>
 </template>
 
@@ -25,7 +26,7 @@ export default {
     },
     methods: {
         remove_micropost_at(id) {
-            this.microposts.splice(id, 1, {});
+            this.microposts.splice(id, 1);
         },
         favorite_canceled_at(id) {
             this.microposts[id].liked = false;

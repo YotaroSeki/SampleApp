@@ -2,10 +2,11 @@
     <ul class='users follow'>
         <UsersListItem
         @user-deleted='remove_user_at'
-        v-for='user in users'
+        v-for='(user, index) in users'
         :user='user'
         :current_user='current_user'
-        :key='user.id'/>
+        :key='index'
+        :index='index'/>
     </ul>
 </template>
 

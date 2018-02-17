@@ -17,7 +17,6 @@
                             :current_user='profile.current_user'
                             :microposts='favorites_list[current_page]'/>
             <el-pagination
-            @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
             background
             layout='prev, pager, next'
@@ -54,7 +53,7 @@ export default {
     mounted: function () {
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
-                this.favorites_list = response.data.favorites
+                this.favorites_list = response.data.favorites;
                 this.profile = response.data.profile;
                 this.statistics = response.data.statistics;
             });
@@ -62,8 +61,6 @@ export default {
     methods: {
         handleCurrentChange(val) {
             this.current_page = val - 1;
-        },
-        handleSizeChange(val) {
         }
     }
 }

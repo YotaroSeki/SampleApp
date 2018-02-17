@@ -10,19 +10,19 @@
 export default {
     name: 'FavoriteCancelForm',
     props: {
-        micropost: Object
+        micropost: Object,
+        index: Number
     },
     methods: {
         cancel_favorite() {
             this.axios.delete(this.micropost.favorite_path)
                 .then((res) => {
-                    console.log(res);
                     this.$notify({
                         title: 'Success',
                         message: 'favorite canceled!',
                         type: 'success'
                     });
-                    this.$emit('favorite-canceled', this.micropost.id)
+                    this.$emit('favorite-canceled', this.index)
                 })
                 .catch((error)  => {
                     console.log(error);
