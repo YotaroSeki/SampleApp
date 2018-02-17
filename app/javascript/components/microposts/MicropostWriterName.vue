@@ -1,8 +1,8 @@
 <template>
     <span class='user'>
-            <a :href='writer_link'>
-                {{ writer_name }}
-            </a>
+        <a :href='writer_link'>
+            {{ writer_name }}
+        </a>
     </span>
 </template>
 
