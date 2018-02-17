@@ -1,9 +1,9 @@
 <template>
     <div>
-        <micropost-writer-avatar
+        <MicropostWriterAvatar
                 :writer_link='writer_link'
                 :avatar_url='avatar_url'/>
-        <micropost-writer-name
+        <MicropostWriterName
                 :writer_link='writer_link'
                 :writer_name='writer_name'/>
     </div>
@@ -20,9 +20,9 @@ export default {
         'MicropostWriterName': MicropostWriterName
     },
     props: {
-        avatar_url: {type: String},
-        writer_link: {type: String},
-        writer_name: {type: String}
+        avatar_url: String,
+        writer_link: String,
+        writer_name: String
     }
 }
 </script>

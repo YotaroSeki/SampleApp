@@ -10,8 +10,8 @@
 export default {
     name: 'MicropostWriterName',
     props: {
-        writer_link: {type: String},
-        writer_name: {type: String}
+        writer_link: String,
+        writer_name: String
     }
 }
 </script>

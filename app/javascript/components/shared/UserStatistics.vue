@@ -1,8 +1,8 @@
 <template>
     <div class='stats'>
-        <user-statistics-item :statistics='following'/>
-        <user-statistics-item :statistics='followers'/>
-        <user-statistics-item :statistics='favorites'/>
+        <UserStatistics-item :statistics='following'/>
+        <UserStatisticsItem :statistics='followers'/>
+        <UserStatisticsItem :statistics='favorites'/>
     </div>
 </template>
 
@@ -11,13 +11,13 @@ import UserStatisticsItem from './UserStatisticsItem.vue'
 
 export default {
     name: 'UserStatistics',
+    components: {
+        'UserStatisticsItem': UserStatisticsItem
+    },
     props: {
         'following': {type: Object},
         'followers': {type: Object},
         'favorites': {type: Object}
-        },
-    components: {
-        'UserStatisticsItem': UserStatisticsItem
     }
 }
 </script>

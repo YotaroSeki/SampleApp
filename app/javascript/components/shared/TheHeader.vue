@@ -2,8 +2,7 @@
     <el-menu mode='horizontal'
              background-color='#545c64'
              text-color='#fff'
-             active-text-color='#ffd04b'
-    >
+             active-text-color='#ffd04b'>
         <el-row>
             <el-col :span='4' :offset='1'>
                 <a href='/'
@@ -45,25 +44,25 @@
                         </el-menu-item>
                         <el-menu-item index='4-3'>
                             <button
-                            @click='logout'>
-                            Logout
-                        </button>
+                                @click='logout'>
+                                Logout
+                            </button>
+                        </el-menu-item>
+                    </el-submenu>
+                </el-col>
+            </div>
+            <div v-else>
+                <el-col :span='3'>
+                    <el-menu-item index='4'>
+                        <a href='/login'>
+                            Login
+                        </a>
                     </el-menu-item>
-                </el-submenu>
-            </el-col>
-        </div>
-        <div v-else>
-            <el-col :span='3'>
-                <el-menu-item index='4'>
-                    <a href='/login'>
-                        Login
-                    </a>
-                </el-menu-item>
-            </el-col>
-        </div>
-    </el-row>
-</el-menu>
-        </template>
+                </el-col>
+            </div>
+        </el-row>
+    </el-menu>
+</template>
 
 <script type='text/javascript'>
 export default {

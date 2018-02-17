@@ -3,9 +3,9 @@
         <button
         @click=delete_micropost>
         delete micropost
-    </button>
-</div>
-        </template>
+        </button>
+    </div>
+</template>
 
 <script type='text/javascript'>
 export default {

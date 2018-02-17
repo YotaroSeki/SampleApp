@@ -4,7 +4,7 @@
         <a :href='user.link'>
             {{ user.name }}
         </a>
-        <button
+        <button v-if='current_user.admin'
         @click='delete_user'>
         delete user
     </button>

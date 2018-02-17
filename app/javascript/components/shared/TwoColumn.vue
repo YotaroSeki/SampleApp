@@ -1,8 +1,8 @@
 <template>
     <div class='row'>
-        <el-aside class='col-md-4'>
+        <ElAside class='col-md-4'>
             <slot name='aside'/>
-        </el-aside>
+        </ElAside>
         <div class='col-md-8'>
             <slot name='main-contents'/>
         </div>
@@ -11,6 +11,6 @@
 
 <script type='text/javascript'>
 export default {
-    name: 'PaageLayout'
+    name: 'TwoColumn'
 }
 </script>

@@ -8,8 +8,8 @@
 export default {
     name: 'MicropostWriterAvatar',
     props: {
-        writer_link: {type: String},
-        avatar_url: {type: String}
+        writer_link: String,
+        avatar_url: String
     }
 }
 </script>

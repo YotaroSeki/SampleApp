@@ -1,21 +1,30 @@
 <template>
-    <li>
-        <micropost-writer :writer_link='micropost.writer_link'
-                          :avatar_url='micropost.writer_avatar_url'
-                          :writer_name='micropost.writer_name'/>
-        <micropost-content :content='micropost.content'
-                           :picture_url='micropost.picture_url'/>
-        <micropost-timestamp :timestamp='micropost.timestamp'/>
-        <favorite-form :micropost='micropost'/>
-        <micropost-delete-form
-        @micropost-deleted='micropost_deleted'
-        v-if='current_user.admin'
-        :micropost_link='micropost.link'
-        />
-    </li>
+    <div>
+        <div v-if='Object.keys(micropost).length === 0'/>
+        <li v-else>
+            <MicropostWriter :writer_link='micropost.writer_link'
+                             :avatar_url='micropost.writer_avatar_url'
+                             :writer_name='micropost.writer_name'/>
+            <MicropostContent :content='micropost.content'
+                              :picture_url='micropost.picture_url'/>
+            <MicropostTimestamp :timestamp='micropost.timestamp'/>
+            <FavoriteCancelForm v-if='micropost.liked'
+            @favorite-canceled='favorite_canceled'
+            :micropost='micropost'/>
+            <FavoriteForm v-else
+            @favorite-succeed='favorite_succeed'
+            :micropost='micropost'/>
+            <MicropostDeleteForm
+            @micropost-deleted='remove_micropost_from_list'
+            v-if='current_user.admin'
+            :micropost_link='micropost.link'
+            />
+        </li>
+    </div>
 </template>
 
 <script type='text/javascript'>
+import FavoriteCancelForm from '../favorites/FavoriteCancelForm.vue';
 import FavoriteForm from '../favorites/FavoriteForm.vue';
 import MicropostContent from './MicropostContent.vue';
 import MicropostDeleteForm from './MicropostDelleteForm.vue';
@@ -24,20 +33,27 @@ import MicropostWriter from './MicropostWriter.vue';
 
 export default {
     name: 'MicropostsListItem',
-    props: {
-        'current_user': {type: Object},
-        'micropost': {type: Object}
-    },
     components: {
+        'FavoriteCancelForm': FavoriteCancelForm,
         'FavoriteForm': FavoriteForm,
         'MicropostContent': MicropostContent,
         'MicropostDeleteForm': MicropostDeleteForm,
         'MicropostTimestamp': MicropostTimestamp,
         'MicropostWriter': MicropostWriter
     },
+    props: {
+        'current_user': Object,
+        'micropost': Object
+    },
     methods: {
-        micropost_deleted() {
-            this.$emit('micropost-deleted', this.micropost.id)
+        remove_micropost_from_list() {
+            this.$emit('remove-micropost-from-list', this.micropost.id)
+        },
+        favorite_canceled() {
+            this.$emit('favorite-canceled', this.micropost.id)
+        },
+        favorite_succeed() {
+            this.$emit('favorite-succeed', this.micropost.id)
         }
     }
 }

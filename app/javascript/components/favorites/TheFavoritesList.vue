@@ -1,11 +1,11 @@
 <template>
-    <page-layout>
+    <TwoColumn>
         <div slot='aside'>
-            <user-profile :profile='profile'/>
+            <UserProfile :profile='profile'/>
             <section class='stats'>
-                <user-statistics :following='statistics.following'
-                                 :followers='statistics.followers'
-                                 :favorites='statistics.favorites'/>
+                <UserStatistics :following='statistics.following'
+                                :followers='statistics.followers'
+                                :favorites='statistics.favorites'/>
             </section>
         </div>
         <div slot='main-contents'>
@@ -13,9 +13,9 @@
                 {{ profile.title }}
                 <div v-if='current_page !== 0'>({{ current_page + 1 }} page)</div>
             </h3>
-            <microposts-list v-if='favorites_list && profile.favorites_count !== 0'
-                             :current_user='profile.current_user'
-                             :microposts='favorites_list[current_page]'/>
+            <MicropostsList v-if='favorites_list && profile.favorites_count !== 0'
+                            :current_user='profile.current_user'
+                            :microposts='favorites_list[current_page]'/>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
@@ -24,11 +24,11 @@
             :total='profile.favorites_count'
             :page-size='30'/>
         </div>
-    </page-layout>
+    </TwoColumn>
 </template>
 
 <script type='text/javascript'>
-import PageLayouts from '../shared/PageLayout.vue';
+import TwoColumn from '../shared/TwoColumn.vue';
 import MicropostsList from '../microposts/MicropostsList.vue';
 import UserProfile from '../shared/UserProfile.vue';
 import UserStatistics from '../shared/UserStatistics.vue';
@@ -36,7 +36,7 @@ import UserStatistics from '../shared/UserStatistics.vue';
 export default {
     name: 'TheFavoritesList',
     components: {
-        'PageLayout': PageLayouts,
+        'TwoColumn': TwoColumn,
         'MicropostsList': MicropostsList,
         'UserProfile': UserProfile,
         'UserStatistics': UserStatistics

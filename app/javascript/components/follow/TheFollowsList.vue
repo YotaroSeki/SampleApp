@@ -1,13 +1,13 @@
 <template>
-    <page-layout>
+    <TwoColumn>
         <div slot='aside'>
-            <user-profile :profile='profile'/>
+            <UserProfile :profile='profile'/>
             <section class='stats'>
-                <user-statistics :following='statistics.following'
-                                 :followers='statistics.followers'
-                                 :favorites='statistics.favorites'/>
-                <follow-avatars v-if='profile.follow_count !== 0'
-                                :follows='follows_list[current_page]'/>
+                <UserStatistics :following='statistics.following'
+                                :followers='statistics.followers'
+                                :favorites='statistics.favorites'/>
+                <FollowAvatars v-if='profile.follow_count !== 0'
+                               :follows='follows_list[current_page]'/>
             </section>
         </div>
         <div slot='main-contents'>
@@ -15,9 +15,9 @@
                 {{ profile.title }}
                 <div v-if='current_page !== 0'>({{ current_page + 1 }} page)</div>
             </h3>
-            <users-list v-if='follows_list && profile.follow_count !== 0'
-                        :users='follows_list[current_page]'
-                        :current_user='profile.current_user'/>
+            <UsersList v-if='follows_list && profile.follow_count !== 0'
+                       :users='follows_list[current_page]'
+                       :current_user='profile.current_user'/>
             <el-pagination
             @size-change='handleSizeChange'
             @current-change='handleCurrentChange'
@@ -26,11 +26,11 @@
             :total='profile.follow_count'
             :page-size='30'/>
         </div>
-    </page-layout>
+    </TwoColumn>
 </template>
 
 <script type='text/javascript'>
-import PageLayout from '../shared/PageLayout.vue';
+import TwoColumn from '../shared/TwoColumn.vue';
 import UserStatistics from '../shared/UserStatistics.vue';
 import FollowAvatars from '../users/FollowAvatars.vue';
 import UserProfile from '../shared/UserProfile.vue';
@@ -40,7 +40,7 @@ import UsersList from '../users/UsersList.vue';
 export default {
     name: 'TheFollowsList',
     components: {
-        'PageLayout': PageLayout,
+        'TwoColumn': TwoColumn,
         'UserStatistics': UserStatistics,
         'FollowAvatars': FollowAvatars,
         'UserProfile': UserProfile,

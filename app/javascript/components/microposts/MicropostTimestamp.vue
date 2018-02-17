@@ -8,7 +8,7 @@
 export default {
     name: 'MicropostTimestamp',
     props: {
-        timestamp: {type: String}
+        timestamp: String
     }
 }
 </script>

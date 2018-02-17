@@ -10,8 +10,8 @@
 export default {
     name: 'MicropostContent',
     props: {
-        content: {type: String},
-        picture_url: {type: String}
+        content: String,
+        picture_url: String
     }
 }
 </script>
