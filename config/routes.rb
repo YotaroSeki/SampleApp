@@ -16,23 +16,11 @@ Rails.application.routes.draw do
       get :following, :followers, :favorites
     end
   end
-  resources :microposts, only: %i[create destroy]
+
+  resources :microposts, only: %i[create destroy], constraints: { id: /\d+/ } do
+    resource :favorites, only: %i[create destroy], controller: 'microposts/favorites'
+  end
+
   resources :relationships, only: %i[create destroy]
-  resources :favorites, only: %i[create destroy]
 
-  # namespace 'static_pages' do
-  #   get :home
-  #   get :help
-  #   get :about
-  #   get :contact
-  # end
-
-  # get 'static_pages/home'
-  #
-  # get 'static_pages/help'
-  #
-  # get 'static_pages/about'
-  #
-  # get 'static_pages/contact'
-  # # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+ end

@@ -12,7 +12,6 @@ json = {
 json[:statistics] = render 'user_statistics'
 
 favorites_list = @favorite_microposts.map.with_index do |micropost, id|
-  favorite_id = Favorite.where('(user_id = ?) AND (micropost_id = ?)', @current_user.id, micropost.id).ids
   {
     id: id,
     writer: micropost.user,
@@ -24,7 +23,7 @@ favorites_list = @favorite_microposts.map.with_index do |micropost, id|
     picture_url: micropost.picture.url,
     timestamp: time_ago_in_words(micropost.created_at),
     liked: true,
-    cancel_favorite_path: favorite_path(favorite_id)
+    favorite_path: micropost_favorites_path(micropost.id)
   }
 end
 
