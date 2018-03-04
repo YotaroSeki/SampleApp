@@ -49,6 +49,9 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'chromedriver-helper'
 end
 
 group :development do
@@ -61,6 +64,8 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
+  gem 'launchy'
   gem 'guard'
   gem 'guard-minitest'
   gem 'minitest-reporters'
