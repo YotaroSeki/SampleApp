@@ -3,6 +3,7 @@ FactoryBot.define do
     name 'Meu Meu'
     email 'meumeu@example.com'
     password 'meumeu'
+    admin true
   end
 
   factory :other_user, class: User do

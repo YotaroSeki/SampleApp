@@ -1,25 +1,26 @@
 require 'rails_helper'
 
 feature 'Favorites', type: :system do
-  background do
-    driven_by :selenium_chrome_headless
-  end
   let(:login_user) { create(:login_user) }
   let(:other_user) { create(:other_user) }
-  let(:favorites) {
-    other_user.microposts.map do |micropost|
-      create(:favorite, micropost: micropost, user: login_user)
-    end
-  }
 
-  scenario 'cancel posting favorites and make it favorite again' do
-    begin
-      p 'MEU'
-      visit favorites_user_path(login_user)
-      p 'PO'
-        # expect(page).to have_button 'cancel favorite'
-    rescue => e
-      p e
+  background do
+    login_user.follow(other_user)
+    other_user.follow(login_user)
+    other_user.microposts.map do |micropost|
+      login_user.favorite(micropost)
     end
+  end
+
+  scenario 'cancel posting favorites and make it favorite again', js: true do
+    login(login_user)
+    # visit favorites_user_path(login_user)
+    #
+    # expect(page).to have_button 'cancel favorite'
+    sleep 5
+    visit 'users/1/favorites'
+    sleep 10
+    visit 'users/1/favorites.jsonld'
+    sleep 10
   end
 end

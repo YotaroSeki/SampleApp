@@ -51,6 +51,7 @@ export default {
         }
     },
     mounted: function () {
+        console.log('popopo')
         this.axios.get(location.href + '.jsonld')
             .then((response) => {
                 this.favorites_list = response.data.favorites;

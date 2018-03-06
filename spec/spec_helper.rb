@@ -13,8 +13,17 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 require 'factory_bot'
 require 'faker'
+require 'capybara/rspec'
+
+def login(login_user)
+  visit login_url
+  fill_in 'Email', with: login_user.email
+  fill_in 'Password', with: 'meumeu'
+  click_button 'Log in'
+end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
