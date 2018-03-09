@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='favorite-cancel-form'>
         <button @click=cancel_favorite>
         cancel favorite
         </button>
