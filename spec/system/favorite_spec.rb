@@ -31,7 +31,6 @@ feature 'Favorites', type: :system do
     expect(page).to have_content 'favorite succeed!'
     expect(Favorite.count).to eq @favorite_count_at_the_start
     expect(all('.favorite-cancel-form').size).to eq @favorite_count_at_the_start
-
   end
 
   after do

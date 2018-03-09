@@ -12,11 +12,11 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'faker'
 gem 'fog'
+gem 'jb'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rails', '~> 5.1.4'
 gem 'webpacker', github: 'rails/webpacker'
-gem 'jb'
 gem 'will_paginate'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -48,27 +48,27 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'chromedriver-helper'
   gem 'capybara-selenium'
+  gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'bullet'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
-  gem 'bullet'
 end
 
 group :test do
   gem 'database_cleaner'
-  gem 'launchy'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'launchy'
   gem 'minitest-reporters'
   gem 'rails-controller-testing'
 end

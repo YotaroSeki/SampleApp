@@ -1,5 +1,4 @@
 class Microposts::FavoritesController < ApplicationController
-
   def create
     @micropost = Micropost.find_by(id: params[:micropost_id])
     current_user.favorite(@micropost)
