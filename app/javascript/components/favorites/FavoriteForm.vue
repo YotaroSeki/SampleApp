@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <button
-        @click='favorite'>
+    <div class='favorite-form'>
+        <button @click='favorite'>
             favorite
         </button>
     </div>

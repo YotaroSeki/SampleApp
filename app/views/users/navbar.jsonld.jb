@@ -1,7 +1,7 @@
 json = {
-    paths: {},
-    authenticity_token: form_authenticity_token,
-    is_logged_in: logged_in?
+  paths: {},
+  authenticity_token: form_authenticity_token,
+  is_logged_in: logged_in?
 }
 if logged_in?
   json[:paths][:current_user] = user_path(current_user)
